@@ -42,13 +42,13 @@ const Home = ({ children }) => {
   };
 
   return (
-    <main className="container mx-auto p-4 flex-grow">
+    <main className="container mx-auto p-4 flex-grow bg-gray-900 text-white">
       <nav className="mb-4">
         <ul className="flex space-x-4 justify-center">
           <li>
             <button
               onClick={() => setConteudoAtual('personagens')}
-              className={`px-4 py-2 rounded ${conteudoAtual === 'personagens' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'personagens' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-white'}`}
             >
               Personagens
             </button>
@@ -56,7 +56,7 @@ const Home = ({ children }) => {
           <li>
             <button
               onClick={() => setConteudoAtual('contador')}
-              className={`px-4 py-2 rounded ${conteudoAtual === 'contador' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'contador' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-white'}`}
             >
               Contador de Personagens
             </button>
@@ -64,7 +64,7 @@ const Home = ({ children }) => {
           <li>
             <button
               onClick={() => setConteudoAtual('vilas')}
-              className={`px-4 py-2 rounded ${conteudoAtual === 'vilas' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'vilas' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-white'}`}
             >
               Vilas Ninja
             </button>
@@ -72,7 +72,7 @@ const Home = ({ children }) => {
           <li>
             <button
               onClick={() => setConteudoAtual('akatsuki')}
-              className={`px-4 py-2 rounded ${conteudoAtual === 'akatsuki' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'akatsuki' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-white'}`}
             >
               Akatsuki
             </button>
@@ -80,7 +80,7 @@ const Home = ({ children }) => {
           <li>
             <button
               onClick={() => setConteudoAtual('kara')}
-              className={`px-4 py-2 rounded ${conteudoAtual === 'kara' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'kara' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-white'}`}
             >
               Kara
             </button>
