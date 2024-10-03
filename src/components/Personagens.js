@@ -7,7 +7,7 @@ const Personagens = ({ paginaAtual, setPaginaAtual, totalPaginas }) => {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
   const [personagemSelecionado, setPersonagemSelecionado] = useState(null);
-  const personagensPorPagina = 21;
+  const personagensPorPagina = 9;
 
   useEffect(() => {
     const buscarPersonagens = async () => {

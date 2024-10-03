@@ -13,7 +13,7 @@ export default function HomePage() {
           <Vilas />
           </Personagens>
       </Home>
-      <Footer nome="Marcelo Augusto" />
+      <Footer email="marceloaugustocge@gmail.com" nome="Marcelo Augusto" />
     </div>
   );
 }
