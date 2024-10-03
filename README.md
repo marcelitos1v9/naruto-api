@@ -34,7 +34,7 @@ Bem-vindo ao projeto de exemplo que demonstra o uso de Next.js e React para cons
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/marcelit0s1v9/naruto-api.git
+   git clone https://github.com/marcelitos1v9/naruto-api.git
    ```
 
 2. **Instale as dependências:**
