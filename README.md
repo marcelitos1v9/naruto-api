@@ -1,8 +1,8 @@
-# 🍥 Naruto Fan Site
+# 🍥 Site de Fãs do Naruto
 
-![Pain de Naruto](https://static.wikia.nocookie.net/naruto/images/1/14/Pain.png)
+![Pain de Naruto](https://imgs.search.brave.com/H6H84nxNxPTVdYJikxUFPVTraQA18z1p1YApKn9Ke5M/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jcml0/aWNhbGhpdHMuY29t/LmJyL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzAzL3BhaW4t/bmFydXRvLTEtOTEw/eDUwNS5qcGc)
 
-Bem-vindo ao Naruto Fan Site! 🎉 Este é um projeto apaixonado dedicado aos fãs do icônico anime e mangá Naruto, oferecendo uma experiência imersiva no vasto universo ninja.
+Bem-vindo ao Site de Fãs do Naruto! 🎉 Este é um projeto apaixonado dedicado aos fãs do icônico anime e mangá Naruto, oferecendo uma experiência imersiva no vasto universo ninja.
 
 ## ✨ Funcionalidades Principais
 
