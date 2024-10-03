@@ -11,7 +11,7 @@ export default function HomePage() {
       <Home>
         <Personagens>
           <Vilas />
-        </Personagens>
+          </Personagens>
       </Home>
       <Footer nome="Marcelo Augusto" />
     </div>

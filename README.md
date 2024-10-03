@@ -20,12 +20,12 @@ Bem-vindo ao Naruto Fan Site! Este é um projeto dedicado aos fãs do anime e ma
 
 1. Clone o repositório:
    ```
-   git clone https://github.com/marcelit0s1v9/naruto-react.git
+   git clone https://github.com/marcelit0s1v9/naruto-api.git
    ```
 
 2. Instale as dependências:
    ```
-   cd naruto-fan-site
+   cd naruto-api
    npm install
    ```
 

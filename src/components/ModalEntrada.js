@@ -32,7 +32,7 @@ const ModalEntrada = ({ onClose }) => {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             placeholder="Digite seu nome"
-            className="w-full p-2 mb-4 border border-orange-300 rounded"
+            className="w-full p-2 text-black mb-4 border border-orange-300 rounded"
           />
           <button
             type="submit"

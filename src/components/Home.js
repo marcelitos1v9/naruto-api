@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Personagens from './Personagens';
 import Vilas from './Vilas';
+import AkatsukiMembers from './AkatsukiMembers';
+import KaraMembers from './KaraMembers';
 
 const Home = ({ children }) => {
   const [conteudoAtual, setConteudoAtual] = useState('personagens');
@@ -27,6 +29,10 @@ const Home = ({ children }) => {
         return <Personagens paginaAtual={paginaAtual} setPaginaAtual={setPaginaAtual} totalPaginas={totalPaginas} />;
       case 'vilas':
         return <Vilas />;
+      case 'akatsuki':
+        return <AkatsukiMembers />;
+      case 'kara':
+        return <KaraMembers />;
       default:
         return <Personagens paginaAtual={paginaAtual} setPaginaAtual={setPaginaAtual} totalPaginas={totalPaginas} />;
     }
@@ -50,6 +56,22 @@ const Home = ({ children }) => {
               className={`px-4 py-2 rounded ${conteudoAtual === 'vilas' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
             >
               Vilas Ninja
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => setConteudoAtual('akatsuki')}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'akatsuki' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+            >
+              Akatsuki
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => setConteudoAtual('kara')}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'kara' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+            >
+              Kara
             </button>
           </li>
         </ul>

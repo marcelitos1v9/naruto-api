@@ -9,7 +9,7 @@ const Footer = ({ nome }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-bold mb-4">Sobre Nós</h3>
-            <p className="text-sm text-center md:text-left">O Naruto Fan Site é dedicado a todos os fãs do universo ninja criado por Masashi Kishimoto. Aqui você encontra informações sobre personagens, vilas, jutsus e muito mais!</p>
+            <p className="text-sm text-center md:text-left">Projeto criado para demonstrar o conhecimento em React.js, Next.js, Tailwind CSS e Axios.</p>
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-bold mb-4">Siga-nos</h3>
@@ -29,7 +29,7 @@ const Footer = ({ nome }) => {
             </div>
             <Link href="mailto:contato@narutofansite.com" className="mt-4 flex items-center hover:text-orange-500">
               <FaEnvelope className="mr-2" />
-              contato@narutofansite.com
+              marceloaugustocge@gmail.com
             </Link>
           </div>
         </div>
