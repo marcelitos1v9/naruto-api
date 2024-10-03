@@ -1,6 +1,6 @@
 # 🍥 Naruto Fan Site
 
-![Banner Naruto](https://example.com/naruto-banner.jpg)
+![Banner Naruto](https://i.imgur.com/vRPYV91.jpg)
 
 Bem-vindo ao Naruto Fan Site! 🎉 Este é um projeto apaixonado dedicado aos fãs do icônico anime e mangá Naruto, oferecendo uma experiência imersiva no vasto universo ninja.
 
