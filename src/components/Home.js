@@ -4,6 +4,7 @@ import Personagens from './Personagens';
 import Vilas from './Vilas';
 import AkatsukiMembers from './AkatsukiMembers';
 import KaraMembers from './KaraMembers';
+import ContadorPersonagem from './ContadorPersonagem';
 
 const Home = ({ children }) => {
   const [conteudoAtual, setConteudoAtual] = useState('personagens');
@@ -33,6 +34,8 @@ const Home = ({ children }) => {
         return <AkatsukiMembers />;
       case 'kara':
         return <KaraMembers />;
+      case 'contador':
+        return <ContadorPersonagem />;
       default:
         return <Personagens paginaAtual={paginaAtual} setPaginaAtual={setPaginaAtual} totalPaginas={totalPaginas} />;
     }
@@ -48,6 +51,14 @@ const Home = ({ children }) => {
               className={`px-4 py-2 rounded ${conteudoAtual === 'personagens' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
             >
               Personagens
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => setConteudoAtual('contador')}
+              className={`px-4 py-2 rounded ${conteudoAtual === 'contador' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+            >
+              Contador de Personagens
             </button>
           </li>
           <li>
@@ -74,6 +85,7 @@ const Home = ({ children }) => {
               Kara
             </button>
           </li>
+          
         </ul>
       </nav>
 
