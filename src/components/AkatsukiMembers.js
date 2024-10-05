@@ -15,17 +15,16 @@ const AkatsukiMembers = () => {
     const buscarMembrosAkatsuki = async () => {
       try {
         setCarregando(true);
-        const resposta = await axios.get(`https://narutodb.xyz/api/akatsuki?page=${paginaAtual}&limit=${membrosPorPagina}`);
-        setMembros(resposta.data.akatsuki);
-        
-        // Verifica se totalAkatsuki existe e é um número válido
-        const totalAkatsuki = resposta.data.totalAkatsuki;
+        const resposta = await axios.get(`https://dattebayo-api.onrender.com/akatsuki?page=${paginaAtual}&limit=${membrosPorPagina}`);
+        setMembros(resposta.data.akatsuki); // Ajuste para acessar a estrutura correta
+
+        const totalAkatsuki = resposta.data.total; // Ajuste para acessar o total correto
         if (totalAkatsuki && !isNaN(totalAkatsuki)) {
           setTotalPaginas(Math.ceil(totalAkatsuki / membrosPorPagina));
         } else {
-          setTotalPaginas(1); // Define como 1 se não houver um total válido
+          setTotalPaginas(1);
         }
-        
+
         setCarregando(false);
       } catch (error) {
         setErro('Ocorreu um erro ao carregar os membros da Akatsuki.');
@@ -55,6 +54,13 @@ const AkatsukiMembers = () => {
     }
   };
 
+  const renderizarRank = (rank) => {
+    if (typeof rank === 'object' && rank !== null) {
+      return Object.values(rank).join(', ') || 'Desconhecida';
+    }
+    return rank || 'Desconhecida';
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4 text-orange-900">Membros da Akatsuki</h1>
@@ -70,8 +76,16 @@ const AkatsukiMembers = () => {
               <img src={membro.images[0]} alt={membro.name} className="w-full h-48 object-cover rounded-lg mb-2" />
             )}
             <div className="mb-2">
-              <p className="font-semibold text-orange-800">Afiliação:</p>
-              <p className="text-orange-700">{membro.personal?.affiliation || 'Desconhecida'}</p>
+              <p className="font-semibold text-orange-800">Status:</p>
+              <p className="text-orange-700">{membro.personal?.status || 'Desconhecido'}</p>
+            </div>
+            <div className="mb-2">
+              <p className="font-semibold text-orange-800">Classificação:</p>
+              <p className="text-orange-700">{renderizarRank(membro.rank?.ninjaRank)}</p>
+            </div>
+            <div className="mb-2">
+              <p className="font-semibold text-orange-800">Natureza do Chakra:</p>
+              <p className="text-orange-700">{Array.isArray(membro.natureType) ? membro.natureType.join(', ') : 'Desconhecida'}</p>
             </div>
           </div>
         ))}

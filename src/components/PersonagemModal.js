@@ -6,7 +6,6 @@ const PersonagemModal = ({ personagem, onClose }) => {
   const renderInfo = (label, value) => {
     let displayValue = value;
     if (typeof value === 'object' && value !== null) {
-      // Se o valor for um objeto, pegamos o primeiro valor não nulo
       displayValue = Object.values(value).find(v => v !== null && v !== undefined) || 'Desconhecido';
     }
     return (

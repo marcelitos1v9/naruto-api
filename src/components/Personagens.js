@@ -1,91 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import PersonagemModal from './PersonagemModal';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import PersonagemModal from "./PersonagemModal";
+import Card from "./Card"; // Importando o componente Card
 
 const Personagens = ({ paginaAtual, setPaginaAtual, totalPaginas }) => {
   const [personagens, setPersonagens] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
   const [personagemSelecionado, setPersonagemSelecionado] = useState(null);
-  const personagensPorPagina = 9;
 
   useEffect(() => {
     const buscarPersonagens = async () => {
       try {
         setCarregando(true);
-        const resposta = await axios.get(`https://narutodb.xyz/api/character?page=${paginaAtual}&limit=${personagensPorPagina}`);
-        setPersonagens(resposta.data.characters);
-        setCarregando(false);
+        const resposta = await axios.get(
+          `https://dattebayo-api.onrender.com/characters?page=${paginaAtual}` // Adiciona a página na URL
+        );
+        console.log(resposta.data.characters); // Verifique a estrutura correta
+        setPersonagens(resposta.data.characters); // Ajuste para acessar o array correto
       } catch (error) {
-        setErro('Ocorreu um erro ao carregar os personagens.');
+        setErro("Ocorreu um erro ao carregar os personagens.");
+      } finally {
         setCarregando(false);
       }
     };
 
     buscarPersonagens();
-  }, [paginaAtual]);
-
-  if (carregando) return <div className="text-orange-800 font-bold">Carregando...</div>;
-  if (erro) return <div className="text-red-600 font-bold">{erro}</div>;
+  }, [paginaAtual]); // Dependência da página atual
 
   const paginaAnterior = () => {
     if (paginaAtual > 1) {
-      setPaginaAtual(prevPagina => prevPagina - 1);
+      setPaginaAtual(paginaAtual - 1);
     }
   };
 
   const proximaPagina = () => {
     if (paginaAtual < totalPaginas) {
-      setPaginaAtual(prevPagina => prevPagina + 1);
+      setPaginaAtual(paginaAtual + 1);
     }
   };
 
-  const abrirDetalhesPersonagem = (personagem) => {
-    setPersonagemSelecionado(personagem);
+  const abrirModal = (personagem) => {
+    setPersonagemSelecionado(personagem); // Define o personagem selecionado
   };
 
-  const getRank = (personagem) => {
-    if (!personagem.rank || !personagem.rank.ninjaRank) return 'Desconhecido';
-    
-    const rank = personagem.rank.ninjaRank;
-    if (typeof rank === 'string') return rank;
-    
-    if (typeof rank === 'object') {
-      // Prioridade para Part II, depois Part I, depois qualquer outro valor
-      return rank['Part II'] || rank['Part I'] || Object.values(rank)[0] || 'Desconhecido';
-    }
-    
-    return 'Desconhecido';
-  };
-
-  const getVillage = (personagem) => {
-    return personagem.personal?.affiliation || 'Desconhecida';
-  };
+  if (carregando) return <div className="text-orange-800 font-bold">Carregando...</div>;
+  if (erro) return <div className="text-red-600 font-bold">{erro}</div>;
 
   return (
     <main className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-orange-900">Personagens de Naruto</h1>
+      <h1 className="text-3xl font-bold mb-4 text-orange-900">
+        Personagens de Naruto
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {personagens.map((personagem) => (
-          <div 
-            key={personagem.id}
-            className="bg-orange-100 shadow-md rounded-lg p-4 border-2 border-orange-300 cursor-pointer hover:bg-orange-200 transition-colors"
-            onClick={() => abrirDetalhesPersonagem(personagem)}
-          >
-            <h2 className="text-2xl font-semibold mb-2 text-orange-900">{personagem.name}</h2>
-            {personagem.images && personagem.images.length > 0 && (
-              <img src={personagem.images[0]} alt={personagem.name} className="w-full h-48 object-cover rounded-lg mb-2" />
-            )}
-            <div className="mb-2">
-              <p className="font-semibold text-orange-800">Rank:</p>
-              <p className="text-orange-700">{getRank(personagem)}</p>
-            </div>
-            <div className="mb-2">
-              <p className="font-semibold text-orange-800">Aldeia:</p>
-              <p className="text-orange-700">{getVillage(personagem)}</p>
-            </div>
-          </div>
-        ))}
+        {Array.isArray(personagens) && personagens.length > 0 ? (
+          personagens.map((personagem) => (
+            <Card // Usando o componente Card para renderizar cada personagem
+              key={personagem.id}
+              personagem={personagem}
+              onClick={() => abrirModal(personagem)} // Passa a função para abrir o modal
+            />
+          ))
+        ) : (
+          <div className="text-red-600 font-bold">Nenhum personagem encontrado.</div>
+        )}
       </div>
       <div className="flex justify-center mt-4">
         <button
@@ -106,7 +84,10 @@ const Personagens = ({ paginaAtual, setPaginaAtual, totalPaginas }) => {
           Próxima
         </button>
       </div>
-      <PersonagemModal personagem={personagemSelecionado} onClose={() => setPersonagemSelecionado(null)} />
+      <PersonagemModal
+        personagem={personagemSelecionado}
+        onClose={() => setPersonagemSelecionado(null)}
+      />
     </main>
   );
 };

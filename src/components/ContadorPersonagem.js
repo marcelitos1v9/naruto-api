@@ -7,6 +7,7 @@ const ContadorPersonagem = () => {
   const [personagem, setPersonagem] = useState(null);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(null);
+  const [modalAberto, setModalAberto] = useState(false); // Estado para controlar a visibilidade do modal
 
   useEffect(() => {
     buscarPersonagem();
@@ -16,8 +17,8 @@ const ContadorPersonagem = () => {
     setCarregando(true);
     setErro(null);
     try {
-      const resposta = await axios.get(`https://narutodb.xyz/api/character/${contador}`);
-      setPersonagem(resposta.data);
+      const resposta = await axios.get(`https://dattebayo-api.onrender.com/characters/${contador}`); // Corrigido para acessar o endpoint correto
+      setPersonagem(resposta.data); // A resposta é um objeto, então não precisa de ajuste
     } catch (error) {
       setErro('Personagem não encontrado');
       setPersonagem(null);
@@ -30,6 +31,9 @@ const ContadorPersonagem = () => {
   const decrementar = () => setContador(prev => Math.max(1, prev - 1));
   const dobrar = () => setContador(prev => prev * 2);
   const resetar = () => setContador(1);
+
+  const abrirModal = () => setModalAberto(true); // Função para abrir o modal
+  const fecharModal = () => setModalAberto(false); // Função para fechar o modal
 
   return (
     <div className="container mx-auto p-4">
@@ -46,7 +50,10 @@ const ContadorPersonagem = () => {
       {erro && <p className="text-center text-red-600">{erro}</p>}
       
       {personagem && (
-        <div className="bg-orange-100 shadow-md rounded-lg p-4 border-2 border-orange-300 max-w-md mx-auto">
+        <div 
+          className="bg-orange-100 shadow-md rounded-lg p-4 border-2 border-orange-300 max-w-md mx-auto cursor-pointer hover:bg-orange-200 transition-colors" 
+          onClick={abrirModal} // Adiciona o evento de clique ao cartão inteiro
+        >
           <h2 className="text-2xl font-semibold mb-2 text-orange-900">{personagem.name}</h2>
           {personagem.images && personagem.images.length > 0 && (
             <img src={personagem.images[0]} alt={personagem.name} className="w-full h-48 object-cover rounded-lg mb-2" />
@@ -56,6 +63,11 @@ const ContadorPersonagem = () => {
             <p className="text-orange-700">{personagem.personal?.affiliation || 'Desconhecida'}</p>
           </div>
         </div>
+      )}
+
+      {/* Renderiza o modal se estiver aberto */}
+      {modalAberto && (
+        <PersonagemModal personagem={personagem} onClose={fecharModal} />
       )}
     </div>
   );
